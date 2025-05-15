@@ -2,6 +2,8 @@
 % mathptmx is a Times Roman look-alike (don't use the times package)
 % It isn't clear if Times is required. The OGS manual lists several
 % "standard fonts" but never says they need to be used.
+\usepackage{astrojournals}
+\usepackage{natbib}
 \usepackage{mathptmx}
 \usepackage[NoDate]{currvita}
 \usepackage{array}
@@ -9,8 +11,9 @@
 \usepackage{booktabs}
 \usepackage{ragged2e}
 \usepackage{microtype}
-\usepackage[breaklinks=true,pdfborder={0 0 0}]{hyperref}
 \usepackage{graphicx}
+\makeatletter
+
 \AtBeginDocument{%
 	\settowidth\cvlabelwidth{\cvlabelfont 0000--0000}%
 }
@@ -28,9 +31,8 @@
 
 % Required information
 \title{This is the Title of My Dissertation}
-\author{My Full Legal Name}
-\degree{My Degree Title}{Doctor of Philosophy/Doctor of Musical
-Arts/\par Doctor of Education}
+\author{Lingfeng Wei}
+\degree{Physics}{Doctor of Philosophy}
 % Each member of the committee should be listed as Professor Foo Bar.
 % If Professor is not the correct title for one, then titles should be
 % omitted entirely.
@@ -197,6 +199,8 @@ text of the abstract must be double spaced.
 This optional section is barely described in the OGS manual other than
 saying it is optional and that it appears in the table of contents
 between the Abstract and the first chapter.
+
+Hello world \citet{Aghakhanloo-2021} \citep[][]{Beasor-2021}
 
 No formatting guidelines appear so presumably, it should be formatted
 like an ordinary chapter. It should appear after the
@@ -390,7 +394,7 @@ a&b&c\\
 
 % Stuff at the end of the dissertation goes in the back matter
 \backmatter
-\bibliographystyle{plain} % Or whatever style you want like plainnat
+\bibliographystyle{aasjournalv7}
 \bibliography{references}
 
 \end{document}

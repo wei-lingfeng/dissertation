@@ -5,7 +5,6 @@
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{book}}
 \ProcessOptions\relax 
 \LoadClass{book}
-\RequirePackage{fixltx2e}
 \RequirePackage{calc}
 \RequirePackage[layout=letterpaper,
 	headsep=.5truein,
@@ -19,7 +18,7 @@
 \RequirePackage{afterpage}
 \RequirePackage{etoolbox}
 \RequirePackage{ragged2e}
-
+ 
 % This command can be used in the preamble to increase the margins
 % uniformly. If uniformity is not desired, then \geometry can be used
 % explicitly.
@@ -501,6 +500,16 @@ command!}{Uh oh}}
 	}{}{\ucsd@patchfailed}%
 }
 
+
+
+
+
+
+% re-define thebibliography environment
+
+
+
+
 % Set page style for the front matter
 \appto\frontmatter{%
 	\pagestyle{plain}%
@@ -579,5 +588,24 @@ command!}{Uh oh}}
 % noted.
 \doublespacing
 
+
+\usepackage{xcolor}
+% hyperref link defaults to "blue" (0000ff) as this matches our publisher produced pdf style
+\definecolor{xlinkcolor}{cmyk}{1,1,0,0}
+
+
+%% \PassOptionsToPackage{hyphens}{url}
+%% In response to request from AAS
+ \usepackage[bookmarks=true,         % show bookmarks bar?/ Changed March 22, 2019 for
+                                     % improved accessibility
+    pdfnewwindow=true,      % links in new window
+   colorlinks=true,    % false: boxed links; true: colored links
+  linkcolor=xlinkcolor,     % color of internal links
+ citecolor=xlinkcolor,     % color of links to bibliography
+filecolor=xlinkcolor,  % color of file links
+urlcolor=xlinkcolor,      % color of external links
+final=true
+ ]{hyperref}
+ 
 \endinput
 % vim: filetype=tex
