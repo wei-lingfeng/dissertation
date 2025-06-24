@@ -520,10 +520,10 @@ FUNCTION {format.names}
   #1 'nameptr :=
   s num.names$ 'numnames :=
   numnames 'namesleft :=
-  numnames #5 > 
-    { #3 'numtrunc := }
-    {}
-  if$
+  % numnames #5 > 
+  %   { #3 'numtrunc := }
+  %   {}
+  % if$
   { namesleft #0 > }
   { s nameptr
     "{vv~}{ll}{, jj}{, f.}" format.name$

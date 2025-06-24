@@ -261,6 +261,16 @@
 	\newpage
 }
 
+% Define \introsection and \introsubsection for use in Introduction
+\newcommand{\introsection}[1]{%
+  \section*{#1}%
+  \addcontentsline{toc}{section}{#1}%
+}
+\newcommand{\introsubsection}[1]{%
+  \subsection*{#1}%
+  \addcontentsline{toc}{subsection}{#1}%
+}
+
 % Facing caption pages
 \newbox\ucsd@captionbox
 \newenvironment{facingcaption}[1]{%
@@ -536,7 +546,8 @@ command!}{Uh oh}}
 
 \renewenvironment{quote}{%
 	\par
-	\singlespacing
+        \bfseries
+	% \singlespacing
 	\list{}{\topsep=\z@
 		\partopsep=\z@
 		\rightmargin=.5in
@@ -549,8 +560,8 @@ command!}{Uh oh}}
 % centered text
 \captionsetup{%
 	font={stretch=1},
-	labelfont=bf,
 	format=plain,
+        labelfont=bf,
 	justification=justified,
 	singlelinecheck=false,
 	figureposition=below,
@@ -596,7 +607,7 @@ command!}{Uh oh}}
 
 %% \PassOptionsToPackage{hyphens}{url}
 %% In response to request from AAS
- \usepackage[bookmarks=true,         % show bookmarks bar?/ Changed March 22, 2019 for
+\usepackage[bookmarks=true,         % show bookmarks bar?/ Changed March 22, 2019 for
                                      % improved accessibility
     pdfnewwindow=true,      % links in new window
    colorlinks=true,    % false: boxed links; true: colored links
@@ -606,6 +617,37 @@ filecolor=xlinkcolor,  % color of file links
 urlcolor=xlinkcolor,      % color of external links
 final=true
  ]{hyperref}
- 
+
+
+\newcommand\facility{\@testopt\@facility{[}}%
+\def\@facility[#1]#2{{\vskip6pt{\large\it Facility:} #2}}%
+
+\newcommand\facilities{\@testopt\@facilities{[}}%
+\def\@facilities[#1]#2{{\vskip6pt{\large\it Facilities:} #2}}%
+
+
+\long\def\software{\bgroup\@testopt \@software {[}}
+\def\@software[#1]#2{\vskip 6pt{
+\frenchspacing
+\font\foo=cmr10
+% \iftwelvepoint
+% \font\foo=cmr12
+% \else
+% \font\foo=cmr10\fi
+%%
+\fontdimen2\foo=3pt %% Changed from 1.5pt to 3pt, March12, 2019
+%%
+{\large \it Software: }
+#2
+%% returning to original fontdimen
+\fontdimen2\foo=3.33333pt
+% \iftwelvepoint
+% \fontdimen2\foo=3.91663pt
+% \else
+% \fontdimen2\foo=3.33333pt
+% \fi
+}\egroup}
+
+
 \endinput
 % vim: filetype=tex
